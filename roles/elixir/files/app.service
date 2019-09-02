@@ -1,0 +1,16 @@
+[Unit]
+Description=Elixir service daemon
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+Restart=on-failure
+Environment=MIX_ENV=prod "PORT=4000"
+Environment=LANG=en_US.UTF-8
+
+WorkingDirectory=/var/apps/myapp
+ExecStart=/usr/local/bin/mix phoenix.server
+
+[Install]
+WantedBy=multi-user.target
